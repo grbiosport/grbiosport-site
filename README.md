@@ -3,7 +3,7 @@
 Repositório oficial do ecossistema digital e portal web da **GR.BIOSPORT**, empresa especializada em engenharia sanitária, desinfecção quaternária ativa e certificação de biossegurança para tatames e pisos esportivos de alta densidade.
 
 🌐 **Site Oficial:** [www.grbiosport.com.br](https://www.grbiosport.com.br)  
-📱 **Instagram:** [@grbiosport](https://instagram.com/grbiosport) *(Em Breve / Lançamento Oficial)*
+📱 **Instagram:** [@grbiosport](https://instagram.com/grbiosport)
 
 ---
 
