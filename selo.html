@@ -4,128 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selo GR de Certificação | GR.BIOSPORT</title>
-  <meta name="description" content="Certificação oficial de biossegurança ativa e higienização clínica para tatames e centros de treinamento desportivo.">
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            brand: {
-              green: '#10e875',
-              greenDark: '#0bbd5d',
-              surface: '#0c0f10',
-              surfaceCard: '#141819',
-              surfaceBorder: '#232a2c',
-              muted: '#7a8689'
-            }
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace']
+            brand: { green: '#10e875', surface: '#0c0f10', surfaceCard: '#141819', surfaceBorder: '#232a2c' }
           }
         }
       }
     }
   </script>
 </head>
-<body class="bg-[#0c0f10] text-gray-100 font-sans antialiased selection:bg-[#10e875] selection:text-black">
-
-  <!-- NAVBAR -->
+<body class="bg-[#0c0f10] text-gray-100 font-sans antialiased">
   <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0c0f10]/90 border-b border-brand-surfaceBorder">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-green to-emerald-700 flex items-center justify-center text-black font-extrabold text-xl shadow-[0_0_20px_rgba(16,232,117,0.3)]">
-          GR
-        </div>
-        <div>
-          <div class="flex items-center gap-1">
-            <span class="text-white font-extrabold tracking-wider text-lg">GR.BIOSPORT</span>
-            <span class="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
-          </div>
-          <p class="text-[10px] font-mono tracking-widest text-brand-muted uppercase">Biosecurity Systems</p>
-        </div>
-      </a>
-      <a href="index.html" class="border border-brand-surfaceBorder hover:border-brand-green text-gray-300 hover:text-white bg-[#141819] px-4 py-2 rounded-md font-semibold text-xs transition-all flex items-center gap-2">
-        <i class="fa-solid fa-arrow-left text-brand-green"></i>
-        <span>Voltar ao Início</span>
-      </a>
+    <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+      <a href="index.html" class="text-white font-extrabold tracking-wider text-lg">GR.BIOSPORT</a>
+      <a href="index.html" class="border border-brand-surfaceBorder text-gray-300 hover:text-brand-green px-4 py-2 rounded-md text-xs font-semibold">Voltar ao Início</a>
     </div>
   </header>
-
-  <!-- CONTEÚDO DO SELO -->
-  <main class="py-16 md:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-    
-    <div class="text-center space-y-4 border-b border-brand-surfaceBorder pb-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-green/30 bg-brand-green/5 text-brand-green font-mono text-xs uppercase tracking-wider">
-        <i class="fa-solid fa-certificate"></i>
-        Certificação Oficial de Excelência Sanitária
-      </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-        Selo GR de <span class="text-brand-green">Certificação</span>
-      </h1>
-      <p class="text-gray-400 font-mono text-xs max-w-xl mx-auto">
-        O selo oficial exibido na receção e nos tatames das academias homologadas sob rigoroso padrão bio-analítico.
-      </p>
+  <main class="py-16 max-w-4xl mx-auto px-4 space-y-8 text-center">
+    <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-brand-green to-emerald-800 flex items-center justify-center text-black font-extrabold text-4xl mx-auto shadow-[0_0_30px_rgba(16,232,117,0.4)]">
+      GR
     </div>
-
-    <!-- CARD DO SELO EM DESTAQUE -->
-    <div class="bg-brand-surfaceCard border border-brand-surfaceBorder p-8 sm:p-12 rounded-2xl text-center space-y-8 shadow-2xl relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-32 h-32 bg-brand-green/10 rounded-full blur-2xl pointer-events-none"></div>
-
-      <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-brand-green to-emerald-800 flex items-center justify-center text-black font-extrabold text-4xl mx-auto shadow-[0_0_30px_rgba(16,232,117,0.4)]">
-        GR
-      </div>
-
-      <div class="space-y-2">
-        <h2 class="text-2xl font-extrabold text-white">Área Protegida & Certificada</h2>
-        <p class="text-sm font-mono text-brand-green">TATAME COM BLINDAGEM QUATERNÁRIA ATIVA</p>
-      </div>
-
-      <p class="text-sm text-gray-300 max-w-xl mx-auto leading-relaxed">
-        As academias que ostentam o Selo GR passaram pelo protocolo clínico de 3 fases da GR.BIOSPORT, garantindo ausência de biofilmes patogénicos, proteção dérmica para os atletas e integridade total do piso de alta densidade.
-      </p>
-
-      <div class="pt-4 border-t border-brand-surfaceBorder grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono text-gray-400 text-left">
-        <div class="bg-[#0c0f10] p-3 rounded-lg border border-brand-surfaceBorder">
-          <span class="text-brand-green block font-bold mb-1">01. Auditoria</span>
-          <span>Inspeção técnica de porosidade e carga microbiológica.</span>
-        </div>
-        <div class="bg-[#0c0f10] p-3 rounded-lg border border-brand-surfaceBorder">
-          <span class="text-brand-green block font-bold mb-1">02. Desinfecção</span>
-          <span>Aplicação de tensoativos hospitalares de 5ª geração.</span>
-        </div>
-        <div class="bg-[#0c0f10] p-3 rounded-lg border border-brand-surfaceBorder">
-          <span class="text-brand-green block font-bold mb-1">03. Validação</span>
-          <span>Emissão de laudo técnico e selo oficial no dojo.</span>
-        </div>
-      </div>
+    <h1 class="text-3xl font-extrabold text-white">Selo GR de Certificação</h1>
+    <p class="text-gray-300 max-w-xl mx-auto">Área protegida e auditada sob rigor técnico de biossegurança ativa. Nenhum link externo ou dependência legada.</p>
+    <div class="border-t border-brand-surfaceBorder pt-6">
+      <a href="index.html" class="text-brand-green font-mono text-sm">← Retornar à página principal</a>
     </div>
-
-    <!-- CHAMADA PARA NOVAS ACADEMIAS -->
-    <div class="bg-[#141819] border border-brand-green/30 p-8 rounded-xl text-center space-y-4">
-      <h3 class="text-lg font-bold text-white">Deseja certificar a sua academia no Rio de Janeiro?</h3>
-      <p class="text-xs text-gray-400 max-w-lg mx-auto">
-        Entre em contacto com a nossa equipa técnica e agende um diagnóstico preliminar para o seu espaço de treino.
-      </p>
-      <a href="index.html#contato" class="inline-block bg-brand-green hover:bg-brand-greenDark text-black font-extrabold text-xs px-6 py-3 rounded-md transition-all shadow-[0_0_15px_rgba(16,232,117,0.3)]">
-        SOLICITAR CERTIFICAÇÃO DO DOJÔ
-      </a>
-    </div>
-
-    <div class="pt-8 border-t border-brand-surfaceBorder flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-500">
-      <div>GR.BIOSPORT LABS • BARRA DA TIJUCA, RJ</div>
-      <a href="politica.html" class="text-brand-green hover:underline">Ver Política de Biossegurança →</a>
-    </div>
-
   </main>
-
 </body>
 </html>
