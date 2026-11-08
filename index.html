@@ -1,117 +1,614 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="GR Biosport — Biossegurança e higienização esportiva para academias de Jiu-Jitsu. Engenharia de desinfecção, selo de certificação e auditoria técnica.">
-<title>GR Biosport | Biossegurança para o tatame</title>
-<style>
-  :root {
-    --bg-dark: #0a0d0a;
-    --green-accent: #22c55e;
-    --green-glow: rgba(34, 197, 94, 0.2);
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 2rem;
-  }
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-  }
-  .logo {
-    font-weight: 700;
-    letter-spacing: 2px;
-    font-size: 1.2rem;
-    color: var(--text-main);
-  }
-  .logo span { color: var(--green-accent); }
-  main {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    padding: 4rem 0;
-  }
-  h1 {
-    font-size.clamp(2.5rem, 5vw, 5rem);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-  }
-  h1 span {
-    color: var(--green-accent);
-    text-shadow: 0 0 30px var(--green-glow);
-  }
-  p {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto 2.5rem auto;
-    line-height: 1.6;
-  }
-  .btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background-color: #16a34a;
-    color: white;
-    padding: 0.875rem 2rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 20px rgba(22, 163, 74, 0.4);
-  }
-  .btn-whatsapp:hover {
-    background-color: #15803d;
-    box-shadow: 0 6px 25px rgba(22, 163, 74, 0.6);
-  }
-  footer {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.875rem;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-  }
-</style>
-</head>
-<body>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GR.BIOSPORT - Biossegurança & Higienização de Tatames e Pisos Esportivos</title>
+  <meta name="description" content="Engenharia e desinfecção quaternária ativa de tatames, artes marciais, estúdios e pisos esportivos de alta densidade.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <header>
-    <div class="logo">GR.<span>BIOSPORT</span></div>
-    <div style="font-size: 0.85rem; color: #9ca3af;">RIO DE JANEIRO // RJ</div>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#10e875',
+              greenDark: '#0bbd5d',
+              greenGlow: 'rgba(16, 232, 117, 0.2)',
+              surface: '#0c0f10',
+              surfaceCard: '#141819',
+              surfaceBorder: '#232a2c',
+              muted: '#7a8689'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0c0f10; }
+    ::-webkit-scrollbar-thumb { background: #232a2c; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #10e875; }
+
+    .tech-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+    
+    .radar-scan {
+      background: conic-gradient(from 0deg at 50% 50%, rgba(16, 232, 117, 0.25) 0deg, transparent 60deg, transparent 360deg);
+      animation: rotateScan 4s linear infinite;
+    }
+
+    @keyframes rotateScan {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-[#0c0f10] text-gray-100 font-sans antialiased selection:bg-[#10e875] selection:text-black">
+
+  <!-- TOP BAR TELEMETRIA -->
+  <div class="border-b border-brand-surfaceBorder bg-[#090b0c] text-[11px] font-mono py-2 px-4 text-brand-muted">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-4">
+        <span class="inline-flex items-center gap-1.5 text-brand-green font-semibold">
+          <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+          PISOS E TATAMES 100% HIGIENIZÁVEIS // PROTOCOLO CLÍNICO ATIVO
+        </span>
+        <span class="hidden sm:inline text-gray-500">•</span>
+        <span class="hidden sm:inline">LAT -22.9988 BARRA DA TIJUCA, RJ</span>
+      </div>
+      <div class="flex items-center gap-4 text-gray-400">
+        <span>DESINFECÇÃO HOSPITALAR 5ª GERAÇÃO</span>
+        <span class="hidden md:inline">•</span>
+        <span class="hidden md:inline text-brand-green">ANVISA // ABNT COMPLIANT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0c0f10]/90 border-b border-brand-surfaceBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-green to-emerald-700 flex items-center justify-center text-black font-extrabold text-xl shadow-[0_0_20px_rgba(16,232,117,0.3)]">
+          GR
+        </div>
+        <div>
+          <div class="flex items-center gap-1">
+            <span class="text-white font-extrabold tracking-wider text-lg">GR.BIOSPORT</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+          </div>
+          <p class="text-[10px] font-mono tracking-widest text-brand-muted uppercase">Biosecurity Systems</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+        <a href="index.html#metodologia" class="hover:text-brand-green transition-colors">Metodologia</a>
+        <a href="index.html#perigo" class="hover:text-brand-green transition-colors">O Perigo</a>
+        <a href="index.html#comparativo" class="hover:text-brand-green transition-colors">Comparativo</a>
+        <a href="selo.html" class="hover:text-brand-green transition-colors">Selo GR</a>
+        <a href="politica.html" class="hover:text-brand-green transition-colors">Política</a>
+        <a href="index.html#contato" class="hover:text-brand-green transition-colors">Contato</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#contato" class="bg-brand-green hover:bg-brand-greenDark text-black font-bold text-xs sm:text-sm px-5 py-2.5 rounded-md transition-all duration-300 shadow-[0_0_15px_rgba(16,232,117,0.3)] flex items-center gap-2">
+          <span>Solicitar Diagnóstico</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <h1>Biossegurança Avançada <span>Para o Tatame</span></h1>
-    <p>Programa sanitário profissional e auditável para academias de Jiu-Jitsu. Higienização profunda, selo de certificação e proteção contínua no Rio de Janeiro.</p>
-    
-    <a href="https://wa.me/5521999999999" class="btn-whatsapp" target="_blank" rel="noopener">
-      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.482 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-      Falar via WhatsApp
-    </a>
-  </main>
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-20 md:py-24 border-b border-brand-surfaceBorder overflow-hidden tech-grid">
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0c0f10] via-transparent to-transparent pointer-events-none"></div>
 
-  <footer>
-    <p>&copy; 2026 GR.BIOSPORT. Todos os direitos reservados. Hospedado em GitHub Pages.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-green/30 bg-brand-green/5 text-brand-green font-mono text-xs uppercase tracking-wider">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+            Engenharia & Biossegurança Esportiva
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+            Biossegurança avançada para <span class="text-brand-green underline decoration-brand-green/40 underline-offset-8">tatames e pisos esportivos</span>.
+          </h1>
+
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+            Programa sanitário profissional e auditável para academias, centros de treinamento, artes marciais e estúdios. Higienização profunda em lonas, pisos de borracha e superfícies de alta densidade — com a autoridade técnica de quem entende de performance.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a href="#contato" class="bg-brand-green hover:bg-brand-greenDark text-black font-bold text-sm sm:text-base px-7 py-3.5 rounded-md transition-all duration-300 shadow-[0_0_25px_rgba(16,232,117,0.35)] text-center flex items-center justify-center gap-2">
+              <span>Solicitar Diagnóstico Gratuito</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+            <a href="#metodologia" class="border border-brand-surfaceBorder hover:border-brand-green text-gray-300 hover:text-white bg-[#141819] px-6 py-3.5 rounded-md font-semibold text-sm sm:text-base transition-all flex items-center justify-center gap-2">
+              <i class="fa-solid fa-shield-halved text-brand-green"></i>
+              <span>Ver Metodologia de 3 Fases</span>
+            </a>
+          </div>
+
+          <div class="pt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-mono text-gray-400">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-brand-green"></i>
+              <span>Barra da Tijuca, RJ</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-certificate text-brand-green"></i>
+              <span>Laudo Físico & Digital</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-clock-rotate-left text-brand-green"></i>
+              <span>Ação Residual 72h+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="bg-brand-surfaceCard border border-brand-surfaceBorder rounded-xl p-6 relative overflow-hidden shadow-2xl">
+            <div class="flex justify-between items-center border-b border-brand-surfaceBorder pb-4 mb-5">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-satellite-dish text-brand-green text-sm"></i>
+                <span class="font-mono text-xs uppercase tracking-wider text-gray-300 font-bold">ATP Monitor // Estéril</span>
+              </div>
+              <span class="font-mono text-xs text-brand-green bg-brand-green/10 border border-brand-green/30 px-2 py-0.5 rounded">
+                004 RLU
+              </span>
+            </div>
+
+            <div class="relative w-full aspect-square max-w-[280px] mx-auto rounded-full border border-brand-surfaceBorder flex items-center justify-center mb-6 overflow-hidden">
+              <div class="absolute inset-0 radar-scan"></div>
+              <div class="w-3/4 h-3/4 rounded-full border border-dashed border-brand-surfaceBorder flex items-center justify-center">
+                <div class="w-1/2 h-1/2 rounded-full border border-brand-green/30"></div>
+              </div>
+              <div class="w-2 h-2 rounded-full bg-brand-green shadow-[0_0_10px_#10e875]"></div>
+              
+              <div class="absolute inset-x-0 top-1/2 h-[1px] bg-brand-surfaceBorder"></div>
+              <div class="absolute inset-y-0 left-1/2 w-[1px] bg-brand-surfaceBorder"></div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 border-t border-brand-surfaceBorder pt-5 font-mono">
+              <div>
+                <p class="text-[10px] text-brand-muted uppercase">Esterilização Residual</p>
+                <p class="text-2xl font-extrabold text-white">99.98%</p>
+                <p class="text-[10px] text-brand-green">Eficácia antimicrobiana</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-brand-muted uppercase">Resistência Biofilme</p>
+                <p class="text-2xl font-extrabold text-white">100%</p>
+                <p class="text-[10px] text-brand-green">Barreira lipídica quebrada</p>
+              </div>
+            </div>
+
+            <div class="mt-4 p-2.5 rounded bg-[#0c0f10] border border-brand-surfaceBorder flex items-center justify-between text-[11px] font-mono text-gray-400">
+              <span class="flex items-center gap-1.5">
+                <i class="fa-solid fa-check text-brand-green"></i>
+                Preservação de Lona e Borracha: 100%
+              </span>
+              <span class="text-brand-green">Laudo #892-RJ</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- METODOLOGIA -->
+  <section id="metodologia" class="py-20 md:py-28 border-b border-brand-surfaceBorder bg-[#090b0c]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-green/30 bg-brand-green/5 text-brand-green font-mono text-xs uppercase tracking-wider">
+          <i class="fa-solid fa-flask-vial"></i>
+          Engenharia de Desinfecção
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+          A metodologia <span class="text-brand-green">Biosport</span>
+        </h2>
+        <p class="text-gray-400 text-sm sm:text-base">
+          Não fazemos faxina comum. Aplicamos um protocolo de intervenção clínica em 3 fases, formulado exclusivamente para a densidade e o atrito de tatames, pisos de borracha e superfícies esportivas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-brand-surfaceCard border border-brand-surfaceBorder hover:border-brand-green/50 transition-all duration-300 rounded-xl p-8 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-xs bg-[#0c0f10] text-brand-green border border-brand-surfaceBorder px-2.5 py-1 rounded">
+                FASE 01
+              </span>
+              <i class="fa-solid fa-magnifying-glass-chart text-xl text-gray-500 group-hover:text-brand-green transition-colors"></i>
+            </div>
+            <p class="text-xs font-mono text-brand-muted mb-2">Mapeamento UV & Porosidade</p>
+            <h3 class="text-xl font-bold text-white mb-3">Auditoria & Diagnóstico Sanitário</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Mapeamos as microfissuras, a porosidade do EVA, lonas e pisos de borracha. Identificamos com precisão onde o biofilme bacteriano resiste aos produtos caseiros.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-brand-surfaceBorder/60 flex items-center gap-2 text-xs font-mono text-brand-green">
+            <i class="fa-solid fa-arrow-right"></i>
+            <span>Prevenção de surtos invisíveis</span>
+          </div>
+        </div>
+
+        <div class="bg-brand-surfaceCard border border-brand-surfaceBorder hover:border-brand-green/50 transition-all duration-300 rounded-xl p-8 flex flex-col justify-between group relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-brand-green/5 rounded-full blur-xl pointer-events-none"></div>
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-xs bg-brand-green text-black font-bold px-2.5 py-1 rounded">
+                FASE 02
+              </span>
+              <i class="fa-solid fa-spray-can-sparkles text-xl text-brand-green"></i>
+            </div>
+            <p class="text-xs font-mono text-brand-muted mb-2">Tensoativos de 5ª Geração</p>
+            <h3 class="text-xl font-bold text-white mb-3">Higienização Profunda Quaternária</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Aplicação mecânica com equipamentos Kärcher de alta performance e tensoativos hospitalares. Quebramos a barreira lipídica de vírus e bactérias sem danificar o piso.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-brand-surfaceBorder/60 flex items-center gap-2 text-xs font-mono text-brand-green">
+            <i class="fa-solid fa-shield-virus"></i>
+            <span>Ação residual contínua 72h</span>
+          </div>
+        </div>
+
+        <div class="bg-brand-surfaceCard border border-brand-surfaceBorder hover:border-brand-green/50 transition-all duration-300 rounded-xl p-8 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-xs bg-[#0c0f10] text-brand-green border border-brand-surfaceBorder px-2.5 py-1 rounded">
+                FASE 03
+              </span>
+              <i class="fa-solid fa-award text-xl text-gray-500 group-hover:text-brand-green transition-colors"></i>
+            </div>
+            <p class="text-xs font-mono text-brand-muted mb-2">Certificação Física & Laudo</p>
+            <h3 class="text-xl font-bold text-white mb-3">Selo Oficial & Blindagem de Imagem</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              O seu espaço recebe a Certificação Física de Biossegurança Ativa e laudo para a receção. A higiene do seu dojo ou centro de treino passa a ser o seu maior argumento comercial.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-brand-surfaceBorder/60 flex items-center gap-2 text-xs font-mono text-brand-green">
+            <i class="fa-solid fa-arrow-right"></i>
+            <span>Retenção e valor de marca</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O PERIGO / ESTATISTICAS -->
+  <section id="perigo" class="py-20 border-b border-brand-surfaceBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-amber-500/30 bg-amber-500/5 text-amber-400 font-mono text-xs uppercase tracking-wider">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          Confronto de Realidade
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+          O que está <span class="text-brand-green">realmente</span> no seu piso esportivo?
+        </h2>
+        <p class="text-gray-400 text-sm">
+          O chão parece limpo e o cheiro parece neutro. Mas a biologia não se importa com a aparência: a mistura diária de suor, fricção e circulação gera um habitat microscópico que custa alunos à sua academia.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-brand-surfaceCard border border-brand-surfaceBorder p-6 rounded-xl space-y-3">
+          <div class="text-red-400 text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-biohazard"></i>
+            BIO-RISCO ALTO
+          </div>
+          <div class="text-3xl font-extrabold text-white tracking-tight">+100M</div>
+          <div class="text-xs font-mono text-gray-400 uppercase font-semibold">Microrganismos / m²</div>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Sem esterilização com efeito residual, tatames e pisos de borracha acumulam colónias superiores às encontradas em instalações sanitárias públicas.
+          </p>
+        </div>
+
+        <div class="bg-brand-surfaceCard border border-brand-surfaceBorder p-6 rounded-xl space-y-3">
+          <div class="text-amber-400 text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            INEFICÁCIA CASEIRA
+          </div>
+          <div class="text-3xl font-extrabold text-white tracking-tight">90%</div>
+          <div class="text-xs font-mono text-gray-400 uppercase font-semibold">Falha com produtos comuns</div>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Cloro, sabão em pó e álcool a 70% evaporam em minutos, oxidam o material e não quebram o biofilme bacteriano acumulado nas camadas profundas.
+          </p>
+        </div>
+
+        <div class="bg-brand-surfaceCard border border-brand-surfaceBorder p-6 rounded-xl space-y-3">
+          <div class="text-red-400 text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-person-breastfeeding"></i>
+            CHURN INFANTIL & FAMÍLIAS
+          </div>
+          <div class="text-3xl font-extrabold text-white tracking-tight">82%</div>
+          <div class="text-xs font-mono text-gray-400 uppercase font-semibold">Tolerância zero dos pais</div>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Em turmas infantis e modalidades diversas, um único caso de micose, impetigo ou infeção dérmica leva ao cancelamento imediato de matrículas.
+          </p>
+        </div>
+
+        <div class="bg-brand-surfaceCard border border-brand-surfaceBorder p-6 rounded-xl space-y-3">
+          <div class="text-brand-green text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-chart-line"></i>
+            RETENÇÃO & TICKET
+          </div>
+          <div class="text-3xl font-extrabold text-white tracking-tight">2x</div>
+          <div class="text-xs font-mono text-gray-400 uppercase font-semibold">Mais valor percebido</div>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Academias e centros desportivos certificados por laudos técnicos de biossegurança retêm alunos por mais tempo e elevam o valor percebido da marca.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIVO TABELA -->
+  <section id="comparativo" class="py-20 md:py-28 border-b border-brand-surfaceBorder bg-[#090b0c]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-green/30 bg-brand-green/5 text-brand-green font-mono text-xs uppercase tracking-wider">
+          <i class="fa-solid fa-scale-balanced"></i>
+          Comparação Clínica Direta
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+          Faxina Comum vs. Desinfecção Quaternária Ativa
+        </h2>
+        <p class="text-gray-400 text-sm">
+          Veja a diferença técnica entre passar um pano úmido comum e desativar biologicamente as camadas profundas do seu piso esportivo.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-brand-surfaceCard border border-red-500/20 rounded-xl p-8 space-y-6">
+          <div class="flex items-center justify-between pb-4 border-b border-brand-surfaceBorder">
+            <h3 class="text-lg font-bold text-gray-300">Limpeza Doméstica Convencional</h3>
+            <span class="w-8 h-8 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center font-bold">✕</span>
+          </div>
+
+          <ul class="space-y-4 text-sm text-gray-400">
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-xmark text-red-500 mt-0.5"></i>
+              <span><strong class="text-gray-200">Efeito Residual Nulo:</strong> Produtos comuns evaporam rapidamente, deixando o piso vulnerável logo após o primeiro treino.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-xmark text-red-500 mt-0.5"></i>
+              <span><strong class="text-gray-200">Degradação do Material:</strong> Cloro e ácidos ressecam o EVA, lonas e pisos de borracha, criando microfissuras.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-xmark text-red-500 mt-0.5"></i>
+              <span><strong class="text-gray-200">Falsa Sensação:</strong> O cheiro forte apenas mascara a colónia ativa de dermatófitos e bactérias nocivas.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-xmark text-red-500 mt-0.5"></i>
+              <span><strong class="text-gray-200">Sem Auditoria:</strong> Ausência de comprovação técnica para apresentar aos praticantes e suas famílias.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-brand-surfaceCard border border-brand-green/40 rounded-xl p-8 space-y-6 shadow-[0_0_30px_rgba(16,232,117,0.1)] relative">
+          <div class="flex items-center justify-between pb-4 border-b border-brand-surfaceBorder">
+            <h3 class="text-lg font-bold text-brand-green">Protocolo Ativo GR.BIOSPORT</h3>
+            <span class="w-8 h-8 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center font-bold">✓</span>
+          </div>
+
+          <ul class="space-y-4 text-sm text-gray-300">
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-check text-brand-green mt-0.5"></i>
+              <span><strong class="text-white">Barreira Residual 72h+:</strong> Tensoativos catiônicos que continuam neutralizando patógenos durante toda a rotina de treinos.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-check text-brand-green mt-0.5"></i>
+              <span><strong class="text-white">Preservação de Lonas e Borracha:</strong> Formulação biocompatível sem cloretos livres que protege a maleabilidade e vida útil do piso.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-check text-brand-green mt-0.5"></i>
+              <span><strong class="text-white">Desinfecção de Nível Cirúrgico:</strong> Eliminação molecular comprovada de biofilmes de MRSA, micoses e fungos.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-check text-brand-green mt-0.5"></i>
+              <span><strong class="text-white">Selo Físico e Laudo Digital:</strong> Certificação visível na recepção que eleva imediatamente o padrão e a autoridade do seu espaço.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULÁRIO / CTA -->
+  <section id="contato" class="py-20 md:py-28 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-brand-surfaceCard border border-brand-surfaceBorder rounded-2xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+        
+        <div class="text-center max-w-xl mx-auto mb-10 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-brand-green/30 bg-brand-green/5 text-brand-green font-mono text-xs uppercase tracking-wider">
+            <i class="fa-solid fa-clipboard-check"></i>
+            Auditoria Técnica Sem Compromisso
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+            Eleve o padrão de <span class="text-brand-green">higiene e segurança</span> do seu espaço.
+          </h2>
+          <p class="text-gray-400 text-xs sm:text-sm">
+            Descubra se o seu tatame ou piso esportivo está verdadeiramente seguro. Solicite uma avaliação diagnóstica com a nossa equipe especializada.
+          </p>
+        </div>
+
+        <form id="diagnosticoForm" class="space-y-5" onsubmit="event.preventDefault(); enviarWhatsApp();">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-mono text-gray-300 uppercase mb-2">Nome do Responsável / Cargo</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500 text-xs">
+                  <i class="fa-regular fa-user"></i>
+                </span>
+                <input type="text" id="nome" required placeholder="Ex: Carlos Eduardo (Gestor / Sócio)" class="w-full bg-[#0c0f10] border border-brand-surfaceBorder rounded-lg pl-10 pr-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-green transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-gray-300 uppercase mb-2">Nome da Academia / Centro Esportivo</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500 text-xs">
+                  <i class="fa-solid fa-building"></i>
+                </span>
+                <input type="text" id="academia" required placeholder="Ex: CT Performance / Academia Iron" class="w-full bg-[#0c0f10] border border-brand-surfaceBorder rounded-lg pl-10 pr-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-green transition-colors">
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-mono text-gray-300 uppercase mb-2">WhatsApp com DDD</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500 text-xs">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </span>
+                <input type="tel" id="whatsapp" required placeholder="(21) 99999-9999" class="w-full bg-[#0c0f10] border border-brand-surfaceBorder rounded-lg pl-10 pr-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-green transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-gray-300 uppercase mb-2">Metragem e Tipo de Piso</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500 text-xs">
+                  <i class="fa-solid fa-ruler-combined"></i>
+                </span>
+                <input type="text" id="metragem" required placeholder="Ex: 150m² (Tatame Lona / Borracha)" class="w-full bg-[#0c0f10] border border-brand-surfaceBorder rounded-lg pl-10 pr-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-green transition-colors">
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full bg-brand-green hover:bg-brand-greenDark text-black font-extrabold text-sm sm:text-base py-4 rounded-lg transition-all duration-300 shadow-[0_0_25px_rgba(16,232,117,0.4)] flex items-center justify-center gap-2 mt-4 cursor-pointer">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span>SOLICITAR DIAGNÓSTICO DO PISO</span>
+          </button>
+        </form>
+
+        <div class="mt-8 pt-6 border-t border-brand-surfaceBorder grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-xs font-mono text-gray-400">
+          <div class="flex items-center justify-center gap-2">
+            <i class="fa-solid fa-shield text-brand-green"></i>
+            <span>Atendimento direto por especialistas</span>
+          </div>
+          <div class="flex items-center justify-center gap-2">
+            <i class="fa-brands fa-whatsapp text-brand-green"></i>
+            <span>Resposta rápida no WhatsApp</span>
+          </div>
+          <div class="flex items-center justify-center gap-2">
+            <i class="fa-solid fa-map-pin text-brand-green"></i>
+            <span>Barra da Tijuca e todo o Rio</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-brand-surfaceBorder bg-[#08090a] py-12 text-xs font-mono text-gray-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded bg-brand-green text-black font-bold flex items-center justify-center text-xs">GR</span>
+            <span class="text-white font-bold tracking-wider">GR.BIOSPORT</span>
+          </div>
+          <p class="text-gray-500 leading-relaxed text-[11px]">
+            Biossegurança e Higienização Esportiva para academias, artes marciais e pisos de alta densidade. Engenharia e desinfecção molecular para máxima performance e proteção de atletas.
+          </p>
+          <div class="inline-block px-2.5 py-1 bg-brand-green/10 border border-brand-green/30 text-brand-green rounded text-[10px]">
+            SPORT PROTOCOL LEVEL-3
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold uppercase mb-3">Navegação Técnica</h4>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="index.html#metodologia" class="hover:text-brand-green">01. Visão Geral do Protocolo</a></li>
+            <li><a href="politica.html" class="hover:text-brand-green">02. Política de Biossegurança</a></li>
+            <li><a href="selo.html" class="hover:text-brand-green">03. Selo GR de Certificação</a></li>
+            <li><a href="index.html#contato" class="hover:text-brand-green">04. Auditoria & Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold uppercase mb-3">Unidade & Contato</h4>
+          <ul class="space-y-2 text-gray-500">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-brand-green"></i> grbiosport@gmail.com</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-brand-green"></i> (21) 99794-3603</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-green"></i> Barra da Tijuca, Rio de Janeiro - RJ</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-headset text-brand-green"></i> Plantão Técnico de Desinfecção: 24/7</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold uppercase mb-3">Certificação & Auditoria</h4>
+          <p class="text-gray-500 mb-3 text-[11px]">
+            Selo oficial concedido a centros desportivos sob supervisão bio-analítica contínua.
+          </p>
+          <div class="space-y-1.5 text-[10px]">
+            <a href="selo.html" class="flex items-center justify-between p-1.5 rounded bg-[#0c0f10] border border-brand-surfaceBorder hover:border-brand-green transition-colors">
+              <span class="text-gray-300">CONHECER O SELO GR</span>
+              <i class="fa-solid fa-arrow-right text-brand-green"></i>
+            </a>
+            <a href="politica.html" class="flex items-center justify-between p-1.5 rounded bg-[#0c0f10] border border-brand-surfaceBorder hover:border-brand-green transition-colors">
+              <span class="text-gray-300">POLÍTICA SANITÁRIA</span>
+              <i class="fa-solid fa-arrow-right text-brand-green"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-brand-surfaceBorder pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-500 text-[11px]">
+        <div>
+          © 2026 GR.BIOSPORT LABS. TODOS OS DIREITOS RESERVADOS.
+        </div>
+        <div class="flex gap-4">
+          <a href="politica.html" class="hover:text-gray-300">Política de Biossegurança</a>
+          <a href="selo.html" class="hover:text-gray-300">Selo GR</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
+  <!-- SCRIPT PARA ENVIO VIA WHATSAPP COM O NÚMERO ATUALIZADO -->
+  <script>
+    function enviarWhatsApp() {
+      const nome = document.getElementById('nome').value;
+      const academia = document.getElementById('academia').value;
+      const telefone = document.getElementById('whatsapp').value;
+      const metragem = document.getElementById('metragem').value;
+
+      const numeroWhatsApp = "5521997943603"; 
+
+      const mensagem = `Olá, equipe GR.BIOSPORT!%0A%0AGostaria de solicitar um Diagnóstico Técnico de Biossegurança para o meu espaço:%0A%0A👤 *Responsável:* ${encodeURIComponent(nome)}%0A🥋 *Espaço/Academia:* ${encodeURIComponent(academia)}%0A📱 *WhatsApp:* ${encodeURIComponent(telefone)}%0A📐 *Metragem/Piso:* ${encodeURIComponent(metragem)}%0A%0AAguardo o contato para agendamento da auditoria.`;
+
+      window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, '_blank');
+    }
+  </script>
 </body>
 </html>
