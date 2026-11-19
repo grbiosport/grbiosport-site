@@ -1,0 +1,545 @@
+const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GR Biosport — Biossegurança para o tatame</title>
+<meta name="description" content="Programa sanitário profissional e auditável para academias de Jiu-Jitsu. Higienização profunda, selo de certificação e proteção contínua." />
+<meta property="og:title" content="GR Biosport — Biossegurança para o tatame" />
+<meta property="og:description" content="Programa sanitário profissional e auditável para academias de Jiu-Jitsu." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://media.db.com/images/public/6ab565b5433bf108faf0843d/c566fe01b_generated_image.png" />
+<link rel="icon" href="https://media.db.com/images/public/6ab565b5433bf108faf0843d/d41f1ef5d_grok_1790269213216.jpg" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+  --bg:#0A1418;
+  --bg2:#1A1A1A;
+  --card:#232325;
+  --slate:#3A3A3C;
+  --accent:#4D7C33;
+  --accent-light:#6FA84A;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;background:var(--bg);color:#fff;
+  font-family:'Inter',ui-sans-serif,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--accent);color:#fff;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;}
+.wrap{max-width:80rem;margin:0 auto;padding:0 1.5rem;}
+@media(min-width:768px){.wrap{padding:0 3rem;}}
+.ghost{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:rgba(111,168,74,.55);letter-spacing:.15em;font-size:.7rem;text-transform:uppercase;}
+.trace{height:1px;width:4rem;background:linear-gradient(90deg,transparent,var(--accent),transparent);box-shadow:0 0 8px rgba(77,124,51,.5);}
+.section-label{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1.5rem;}
+.h2{font-weight:300;letter-spacing:-.02em;line-height:.95;margin:0;font-size:clamp(2.5rem,6vw,5rem);}
+.lead{max-width:34rem;margin:1.5rem auto 0;color:rgba(255,255,255,.6);font-size:1.125rem;line-height:1.65;}
+
+/* Hero */
+.hero{position:relative;min-height:640px;height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:var(--bg2);}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.55;}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,26,26,.95),rgba(26,26,26,.5) 55%,transparent);}
+.hero-bg::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(26,26,26,.98),transparent 45%,rgba(26,26,26,.7));}
+.scan{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);box-shadow:0 0 8px rgba(77,124,51,.5);animation:scan 4.5s ease-in-out infinite;pointer-events:none;}
+@keyframes scan{0%{transform:translateY(-10vh);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(100vh);opacity:0}}
+.site-header{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:1.5rem;}
+@media(min-width:768px){.site-header{padding:1.5rem 3rem;}}
+.brand{display:flex;align-items:center;gap:.75rem;}
+.brand img{width:44px;height:44px;object-fit:contain;}
+.brand-name{font-weight:600;letter-spacing:.18em;font-size:.875rem;line-height:1;}
+.brand-tag{margin:.35rem 0 0;display:none;}
+@media(min-width:640px){.brand-tag{display:block;}}
+.menu-btn{display:flex;align-items:center;gap:.5rem;background:none;border:0;color:rgba(255,255,255,.8);transition:color .2s;}
+.menu-btn:hover{color:var(--accent-light);}
+.menu-btn svg{width:20px;height:20px;}
+.hero-content{position:relative;z-index:10;padding:0 1.5rem;max-width:80rem;margin:0 auto;width:100%;}
+@media(min-width:768px){.hero-content{padding:0 3rem;}}
+.hero-kicker{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;}
+.dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);animation:blink 1.6s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:clamp(2.1rem,9.5vw,11vw);font-weight:900;text-transform:uppercase;line-height:.85;letter-spacing:-.03em;margin:0;white-space:nowrap;}
+.kinetic{background:linear-gradient(100deg,#fff 0%,#fff 40%,var(--accent-light) 50%,#fff 60%,#fff 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite;}
+@keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+.hero-sub{margin:2rem 0 0;max-width:36rem;color:rgba(255,255,255,.7);font-size:1.125rem;line-height:1.65;}
+.hero-actions{margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem;}
+@media(min-width:640px){.hero-actions{flex-direction:row;}}
+.btn-primary,.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:.75rem;padding:1rem 2rem;font-weight:600;letter-spacing:.03em;transition:all .25s;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{background:var(--accent-light);box-shadow:0 0 30px rgba(77,124,51,.5);}
+.btn-ghost{border:1px solid rgba(255,255,255,.2);color:#fff;font-weight:500;}
+.btn-ghost:hover{border-color:var(--accent-light);color:var(--accent-light);}
+.hero-note{margin-top:2.5rem;display:flex;align-items:center;gap:.75rem;color:rgba(255,255,255,.5);font-size:.875rem;}
+.hero-note svg{width:16px;height:16px;color:var(--accent-light);flex:none;}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+
+/* Framework */
+.framework{background:var(--bg2);padding:6rem 0;overflow:hidden;}
+@media(min-width:768px){.framework{padding:8rem 0;}}
+.framework-head{text-align:center;margin-bottom:4rem;}
+.framework-head .accent{color:var(--accent-light);font-weight:500;}
+.pillars{display:grid;grid-template-columns:1fr;gap:1.5rem;padding:0 1.5rem;max-width:90rem;margin:0 auto;}
+@media(min-width:768px){.pillars{grid-template-columns:repeat(3,1fr);gap:2rem;padding:0 3rem;}}
+.pillar{background:var(--card);border:1px solid rgba(58,58,60,.6);transition:border-color .5s;}
+.pillar:hover{border-color:rgba(77,124,51,.5);}
+.pillar-img{position:relative;aspect-ratio:4/5;overflow:hidden;}
+.pillar-img img{width:100%;height:100%;object-fit:cover;opacity:.65;transition:all .7s;}
+.pillar:hover .pillar-img img{opacity:.85;transform:scale(1.05);}
+.pillar-img::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(35,35,37,.95),rgba(26,26,26,.3) 55%,transparent);}
+.pillar-img .ghost{position:absolute;top:1.25rem;left:1.25rem;z-index:2;}
+.pillar-body{padding:2rem;}
+@media(min-width:768px){.pillar-body{padding:2.5rem;}}
+.pillar-body h3{font-size:1.75rem;font-weight:300;letter-spacing:-.02em;margin:0 0 1rem;transition:color .3s;}
+@media(min-width:768px){.pillar-body h3{font-size:2.25rem;}}
+.pillar:hover .pillar-body h3{color:var(--accent-light);}
+.pillar-body p{color:rgba(255,255,255,.55);line-height:1.7;margin:0 0 2rem;}
+.pillar-cta{display:flex;align-items:center;gap:.5rem;color:var(--accent-light);font-size:.875rem;font-weight:500;}
+.pillar-cta svg{width:16px;height:16px;}
+
+/* Threat */
+.threat{position:relative;background:var(--bg2);padding:6rem 0;overflow:hidden;border-top:1px solid rgba(58,58,60,.3);}
+@media(min-width:768px){.threat{padding:8rem 0;}}
+.threat-bg{position:absolute;inset:0;opacity:.15;pointer-events:none;}
+.threat-bg img{width:100%;height:100%;object-fit:cover;}
+.threat-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg2),rgba(26,26,26,.8),var(--bg2));}
+.threat .wrap{position:relative;text-align:center;}
+.threat .accent{color:var(--accent-light);font-weight:500;}
+.stats{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:4rem;text-align:left;}
+@media(min-width:640px){.stats{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.stats{grid-template-columns:repeat(4,1fr);}}
+.stat{border:1px solid rgba(58,58,60,.6);background:rgba(35,35,37,.8);padding:1.5rem;transition:border-color .3s;}
+.stat:hover{border-color:rgba(77,124,51,.5);}
+.stat-mark{width:24px;height:24px;border:1px solid var(--accent-light);margin-bottom:1.25rem;}
+.stat-value{font-size:2.25rem;font-weight:300;letter-spacing:-.02em;}
+.stat-unit{font-size:.875rem;font-weight:500;margin:.75rem 0 .5rem;}
+.stat-desc{color:rgba(255,255,255,.45);font-size:.875rem;line-height:1.7;margin:0;}
+
+/* Gallery */
+.gallery{position:relative;background:var(--bg2);padding:6rem 0;overflow:hidden;border-top:1px solid rgba(58,58,60,.3);}
+@media(min-width:768px){.gallery{padding:8rem 0;}}
+.gallery .wrap{text-align:center;margin-bottom:3rem;}
+.gallery .accent{color:var(--accent-light);font-weight:500;}
+.gallery-controls{display:none;align-items:center;justify-content:center;gap:.75rem;margin-bottom:2rem;}
+@media(min-width:768px){.gallery-controls{display:flex;}}
+.gallery-controls button{width:2.75rem;height:2.75rem;background:none;border:1px solid rgba(58,58,60,.7);color:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.gallery-controls button:hover{border-color:var(--accent-light);color:var(--accent-light);}
+.gallery-controls svg{width:20px;height:20px;}
+.track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 1.5rem 1rem;scroll-behavior:smooth;scrollbar-width:none;}
+@media(min-width:768px){.track{gap:1.25rem;padding:0 3rem 1rem;}}
+.track::-webkit-scrollbar{display:none;}
+.card{flex:0 0 auto;width:82vw;scroll-snap-align:start;}
+@media(min-width:640px){.card{width:420px;}}
+@media(min-width:768px){.card{width:360px;}}
+.card-inner{position:relative;aspect-ratio:4/5;overflow:hidden;background:#0e1721;border:1px solid rgba(58,58,60,.6);transition:border-color .3s;}
+.card:hover .card-inner{border-color:rgba(77,124,51,.5);}
+.card-inner img{width:100%;height:100%;object-fit:contain;}
+.drag-hint{text-align:center;margin-top:1.5rem;}
+
+/* Contact */
+.contact{position:relative;background:var(--bg2);padding:6rem 0;overflow:hidden;border-top:1px solid rgba(58,58,60,.3);}
+@media(min-width:768px){.contact{padding:9rem 0;}}
+.contact-grid{position:absolute;inset:0;opacity:.06;background-image:linear-gradient(#4D7C33 1px,transparent 1px),linear-gradient(90deg,#4D7C33 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.contact-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70vw;height:70vw;border-radius:50%;background:radial-gradient(circle,rgba(77,124,51,.35),transparent 60%);filter:blur(60px);opacity:.2;pointer-events:none;}
+.contact .wrap{position:relative;max-width:56rem;text-align:center;}
+.contact .accent{color:var(--accent-light);font-weight:500;}
+.contact-form{max-width:28rem;margin:0 auto;}
+.contact-form form{display:flex;flex-direction:column;gap:.75rem;}
+.contact-form input{width:100%;background:transparent;border:1px solid rgba(58,58,60,.7);color:#fff;padding:1rem 1.25rem;font-size:1rem;font-family:inherit;outline:none;transition:border-color .2s;}
+.contact-form input::placeholder{color:rgba(255,255,255,.3);}
+.contact-form input:focus{border-color:var(--accent-light);}
+.contact-form button{background:var(--accent);color:#fff;border:0;padding:1rem 1.75rem;font-weight:600;letter-spacing:.03em;transition:background .2s;}
+.contact-form button:hover{background:var(--accent-light);}
+.form-note{color:rgba(255,255,255,.5);font-size:.875rem;margin-top:1.25rem;}
+.form-error{color:#f87171;font-size:.875rem;margin-top:1rem;}
+.success{border:1px solid rgba(77,124,51,.5);background:rgba(77,124,51,.07);padding:2.5rem;max-width:28rem;margin:0 auto;display:none;flex-direction:column;align-items:center;text-align:center;}
+.success.show{display:flex;}
+.success svg{width:48px;height:48px;color:var(--accent-light);margin-bottom:1.5rem;}
+.success h3{font-weight:300;font-size:1.25rem;margin:0 0 .75rem;}
+.success p{color:rgba(255,255,255,.6);margin:0;}
+.success a{color:var(--accent-light);font-size:.875rem;margin-top:2rem;}
+
+/* Footer */
+.site-footer{position:relative;background:var(--bg2);border-top:1px solid rgba(58,58,60,.3);overflow:hidden;}
+.footer-grid-bg{position:absolute;inset:0;opacity:.05;background-image:linear-gradient(#4D7C33 1px,transparent 1px),linear-gradient(90deg,#4D7C33 1px,transparent 1px);background-size:80px 80px;pointer-events:none;}
+.footer-inner{position:relative;padding:5rem 0;}
+.wordmark{font-weight:900;text-transform:uppercase;letter-spacing:-.05em;line-height:.8;margin:0 0 4rem;font-size:clamp(3rem,13vw,10rem);}
+.wordmark span{color:var(--accent-light);}
+.footer-cols{display:grid;grid-template-columns:1fr;gap:3rem;margin-bottom:4rem;}
+@media(min-width:768px){.footer-cols{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.footer-cols{grid-template-columns:repeat(5,1fr);}}
+.footer-cols h4{margin:0 0 1rem;}
+.footer-cols p{color:rgba(255,255,255,.4);font-size:.75rem;line-height:1.7;margin:0 0 .5rem;}
+.footer-cols a{color:rgba(255,255,255,.7);font-size:.875rem;transition:color .2s;display:block;}
+.footer-cols a:hover{color:var(--accent-light);}
+.footer-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem;}
+.social{width:2.5rem;height:2.5rem;border:1px solid rgba(58,58,60,.7);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);transition:all .2s;}
+.social:hover{border-color:var(--accent-light);color:var(--accent-light);}
+.social svg{width:16px;height:16px;}
+.footer-bottom{display:flex;flex-direction:column;gap:1rem;padding-top:2rem;border-top:1px solid rgba(58,58,60,.5);}
+@media(min-width:768px){.footer-bottom{flex-direction:row;align-items:center;justify-content:space-between;}}
+.footer-bottom .seal{display:flex;align-items:center;gap:.5rem;}
+.footer-bottom .seal svg{width:16px;height:16px;color:var(--accent-light);}
+
+/* WhatsApp float */
+.wa-float{position:fixed;bottom:1.25rem;right:1.25rem;z-index:40;display:flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;padding:.75rem 1.25rem .75rem 1rem;border-radius:999px;box-shadow:0 10px 25px rgba(0,0,0,.4);transition:background .2s;}
+.wa-float:hover{background:var(--accent-light);}
+.wa-float svg{width:20px;height:20px;}
+.wa-float span{font-size:.875rem;font-weight:500;display:none;}
+@media(min-width:640px){.wa-float span{display:inline;}}
+
+/* Menu overlay */
+.overlay{position:fixed;inset:0;z-index:60;background:rgba(10,20,24,.97);backdrop-filter:blur(6px);display:none;flex-direction:column;padding:1.5rem;}
+.overlay.open{display:flex;}
+.overlay-top{display:flex;align-items:center;justify-content:space-between;}
+.overlay-close{background:none;border:0;color:rgba(255,255,255,.7);padding:.5rem;}
+.overlay-close svg{width:24px;height:24px;}
+.overlay-nav{margin:auto 0;display:flex;flex-direction:column;gap:1.5rem;}
+.overlay-nav a{font-size:clamp(1.75rem,6vw,3rem);font-weight:300;letter-spacing:-.02em;color:#fff;transition:color .2s;}
+.overlay-nav a:hover{color:var(--accent-light);}
+.overlay-foot{color:rgba(255,255,255,.4);font-size:.75rem;}
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-top">
+    <div class="brand">
+      <img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/d41f1ef5d_grok_1790269213216.jpg" alt="GR Biosport" />
+      <div>
+        <p class="brand-name">GR BIOSPORT</p>
+        <p class="ghost brand-tag">BIOSSEGURANÇA ESPORTIVA</p>
+      </div>
+    </div>
+    <button class="overlay-close" id="closeMenu" aria-label="Fechar menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </div>
+  <nav class="overlay-nav">
+    <a href="#hero">Início</a>
+    <a href="#framework">Engenharia de Desinfecção</a>
+    <a href="#threat">O Perigo</a>
+    <a href="#contact">Contato</a>
+  </nav>
+  <p class="overlay-foot">Barra da Tijuca, Rio de Janeiro · grbiosport@gmail.com</p>
+</div>
+
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/c566fe01b_generated_image.png" alt="Academia de Jiu-Jitsu com tatames higienizados" />
+  </div>
+  <div class="scan"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/d41f1ef5d_grok_1790269213216.jpg" alt="GR Biosport — Biossegurança e Higienização Esportiva" />
+      <div>
+        <p class="brand-name">GR BIOSPORT</p>
+        <p class="ghost brand-tag">BIOSSEGURANÇA ESPORTIVA</p>
+      </div>
+    </div>
+    <button class="menu-btn" id="openMenu">
+      <span class="ghost" style="display:none" id="menuLabel">MENU</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+    </button>
+  </header>
+
+  <div class="hero-content">
+    <div class="hero-kicker">
+      <span class="dot"></span>
+      <span class="ghost">BIOSSEGURANÇA ESPORTIVA</span>
+    </div>
+    <h1>Biossegurança<br /><span class="kinetic">para o</span> tatame</h1>
+    <p class="hero-sub">Programa sanitário profissional e auditável para academias de Jiu-Jitsu. Higienização profunda, selo de certificação e proteção contínua — com a autoridade técnica de quem treina no tatame.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#contact">
+        ENTRAR EM CONTATO
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+      </a>
+      <a class="btn-ghost" href="#threat">ENTENDA O RISCO</a>
+    </div>
+    <div class="hero-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+      <span>Selo de Certificação auditável para sua academia</span>
+    </div>
+  </div>
+</section>
+
+<section class="framework" id="framework">
+  <div class="wrap framework-head">
+    <div class="section-label">
+      <span class="ghost">Engenharia de Desinfecção</span>
+      <div class="trace"></div>
+    </div>
+    <h2 class="h2">A metodologia <span class="accent">Biosport</span></h2>
+    <p class="lead">Não fazemos faxina comum. Aplicamos um protocolo de intervenção clínica em 3 fases, formulado exclusivamente para a densidade e o atrito dos tatames de alta intensidade.</p>
+  </div>
+
+  <div class="pillars">
+    <article class="pillar reveal">
+      <div class="pillar-img">
+        <span class="ghost">FASE 01</span>
+        <img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/d2697f726_generated_image.png" alt="Auditoria e Diagnóstico Sanitário" />
+      </div>
+      <div class="pillar-body">
+        <h3>Auditoria &amp; Diagnóstico Sanitário</h3>
+        <p>Mapeamos as microfissuras de impacto, a porosidade do EVA e as zonas cegas de humidade. Identificamos com precisão onde o biofilme bacteriano resiste aos produtos caseiros.</p>
+        <div class="pillar-cta">Prevenção de surtos invisíveis
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </div>
+    </article>
+
+    <article class="pillar reveal">
+      <div class="pillar-img">
+        <span class="ghost">FASE 02</span>
+        <img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/7b6cea0b1_generated_image.png" alt="Higienização Profunda Quaternária" />
+      </div>
+      <div class="pillar-body">
+        <h3>Higienização Profunda Quaternária</h3>
+        <p>Aplicação mecânica de tensoativos hospitalares de 5ª geração. Quebramos a barreira lipídica de vírus, fungos e bactérias sem ressecar ou desgastar a lona do seu dojo.</p>
+        <div class="pillar-cta">Ação residual contínua
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </div>
+    </article>
+
+    <article class="pillar reveal">
+      <div class="pillar-img">
+        <span class="ghost">FASE 03</span>
+        <img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/23e5854f3_generated_image.png" alt="Selo Oficial e Blindagem de Imagem" />
+      </div>
+      <div class="pillar-body">
+        <h3>Selo Oficial &amp; Blindagem de Imagem</h3>
+        <p>O seu espaço recebe a Certificação Física de Biossegurança Ativa e laudo para a receção. A higiene do seu dojo passa a ser o seu argumento comercial de maior autoridade.</p>
+        <div class="pillar-cta">Retenção e valor de marca
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="threat" id="threat">
+  <div class="threat-bg">
+    <img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/d65b8a654_generated_image.png" alt="Visualização microscópica de bactérias e vírus" />
+  </div>
+  <div class="wrap">
+    <div class="section-label">
+      <span class="ghost">Confronto de Realidade</span>
+      <div class="trace"></div>
+    </div>
+    <h2 class="h2">O que está <span class="accent">realmente no seu tatame?</span></h2>
+    <p class="lead">O chão parece limpo e o cheiro parece neutro. Mas a biologia não se importa com a aparência: a mistura diária de suor, fricção e sangue gera um habitat microscópico que custa alunos à sua academia.</p>
+
+    <div class="stats">
+      <div class="stat reveal">
+        <div class="stat-mark"></div>
+        <div class="stat-value">+100M</div>
+        <p class="stat-unit">Microrganismos / m²</p>
+        <p class="stat-desc">Sem esterilização com efeito residual, tatames acumulam colónias superiores às encontradas em instalações sanitárias públicas.</p>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-mark"></div>
+        <div class="stat-value">90%</div>
+        <p class="stat-unit">Falha com produtos comuns</p>
+        <p class="stat-desc">Cloro, sabão em pó e álcool a 70% evaporam em 10 minutos, oxidam a borracha e não quebram o biofilme de estafilococos.</p>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-mark"></div>
+        <div class="stat-value">82%</div>
+        <p class="stat-unit">Tolerância zero dos pais</p>
+        <p class="stat-desc">Nas turmas infantis, um único caso de micose, impetigo ou infeção dérmica leva ao cancelamento imediato de matrículas pelas famílias.</p>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-mark"></div>
+        <div class="stat-value">2x</div>
+        <p class="stat-unit">Mais valor percebido</p>
+        <p class="stat-desc">Espaços desportivos certificados por laudos técnicos de biossegurança retêm atletas por mais tempo e justificam mensalidades superiores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="section-label">
+      <span class="ghost">Galeria // O Perigo é Real</span>
+      <div class="trace"></div>
+    </div>
+    <h2 class="h2" style="font-size:clamp(2.2rem,5vw,4rem)">O que a <span class="accent">ciência revela</span> no tatame</h2>
+    <p class="lead">Imagens que mostram o que o olho nu não vê — e o padrão que a GR Biosport está a trazer para o seu dojo.</p>
+  </div>
+
+  <div class="gallery-controls">
+    <button id="prev" aria-label="Anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <button id="next" aria-label="Próximo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <div class="track" id="track">
+    <article class="card"><div class="card-inner"><img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/05ef270db_1001389978.png" alt="Luz UV revelando colónias de bactérias no tatame" loading="lazy" /></div></article>
+    <article class="card"><div class="card-inner"><img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/3ae2652fe_1001389979.png" alt="Jovem com lesão de pele por micose no vestiário" loading="lazy" /></div></article>
+    <article class="card"><div class="card-inner"><img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/e689d57fc_1001392183.jpg" alt="Criança deitada no tatame suado" loading="lazy" /></div></article>
+    <article class="card"><div class="card-inner"><img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/0e7fa2e60_1001392182.jpg" alt="Contaminação invisível no tatame" loading="lazy" /></div></article>
+    <article class="card"><div class="card-inner"><img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/06caf1341_1001392178.jpg" alt="Pano com desinfetante espalhando bactérias" loading="lazy" /></div></article>
+    <article class="card"><div class="card-inner"><img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/6934efeed_1001392177.jpg" alt="Dojo blindado com tatame higienizado e crianças treinando" loading="lazy" /></div></article>
+  </div>
+
+  <p class="ghost drag-hint">Arraste para ver mais →</p>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-grid"></div>
+  <div class="contact-glow"></div>
+  <div class="wrap">
+    <div class="section-label">
+      <span class="dot"></span>
+      <span class="ghost">Auditoria Técnica Sem Compromisso</span>
+    </div>
+    <h2 class="h2">O padrão do seu tatame reflete o <span class="accent">padrão da sua graduação</span>.</h2>
+    <p class="lead">Descubra se o seu dojo está verdadeiramente seguro ou apenas perfumado. Solicite uma avaliação diagnóstica com a nossa equipa especializada em biossegurança desportiva.</p>
+
+    <div class="contact-form" style="margin-top:3rem">
+      <form id="leadForm">
+        <input type="email" id="email" placeholder="seu@email.com" required />
+        <button type="submit">SOLICITAR DIAGNÓSTICO DO MEU TATAME</button>
+      </form>
+      <p class="form-error" id="formError" style="display:none"></p>
+      <p class="form-note">Atendimento direto por especialistas • Resposta rápida pelo WhatsApp</p>
+    </div>
+
+    <div class="success" id="success">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+      <h3>Diagnóstico solicitado!</h3>
+      <p>A nossa equipa especializada entrará em contato para agendar a auditoria do seu tatame.</p>
+      <a href="#" id="again">Cadastrar outro email</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid-bg"></div>
+  <div class="wrap footer-inner">
+    <h2 class="wordmark">GR<span>.</span>Biosport</h2>
+
+    <div class="footer-cols">
+      <div>
+        <div class="brand">
+          <img src="https://media.db.com/images/public/6ab565b5433bf108faf0843d/d41f1ef5d_grok_1790269213216.jpg" alt="GR Biosport" style="width:56px;height:56px" />
+        </div>
+        <p style="margin-top:1rem;max-width:16rem">Biossegurança e Higienização Esportiva para academias de Jiu-Jitsu.</p>
+      </div>
+
+      <div>
+        <h4 class="ghost">SUPORTE TÉCNICO</h4>
+        <a href="mailto:grbiosport@gmail.com?subject=Suporte%20T%C3%A9cnico">grbiosport@gmail.com</a>
+        <a href="https://wa.me/5521997943603" target="_blank" rel="noreferrer" style="margin-top:.5rem">+55 21 99794-3603 · Gustavo</a>
+        <a href="https://wa.me/5521980788008" target="_blank" rel="noreferrer" style="margin-top:.35rem">+55 21 98078-8008 · Raphael</a>
+        <p style="margin-top:.75rem">Seg a Sáb · 8h às 18h</p>
+        <p>Barra da Tijuca, Rio de Janeiro</p>
+      </div>
+
+      <div>
+        <h4 class="ghost">NOVOS PARCEIROS</h4>
+        <p>Tem uma academia e quer o Selo de Biossegurança?</p>
+        <a href="mailto:grbiosport@gmail.com?subject=Parceria%20GR%20Biosport">Parceria por e-mail</a>
+        <a href="https://wa.me/5521997943603?text=Ol%C3%A1!%20Tenho%20uma%20academia%20e%20quero%20ser%20parceiro%20da%20GR%20Biosport." target="_blank" rel="noreferrer" style="margin-top:.35rem">Falar no WhatsApp</a>
+        <a href="#contact" style="color:#6FA84A;margin-top:.35rem">Solicitar avaliação →</a>
+      </div>
+
+      <div>
+        <h4 class="ghost">NAVEGAÇÃO</h4>
+        <ul class="footer-list">
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#threat">O Perigo</a></li>
+          <li><a href="#framework">Metodologia</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="ghost">REDES</h4>
+        <a class="social" href="https://instagram.com/grbiosport" target="_blank" rel="noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="ghost">© 2026 GR BIOSPORT // BIOSSEGURANÇA E HIGIENIZAÇÃO ESPORTIVA</p>
+      <div class="seal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+        <span class="ghost">BIOSSEGURANÇA ESPORTIVA</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5521997943603?text=Ol%C3%A1!%20Quero%20agendar%20uma%20auditoria%20t%C3%A9cnica%20de%20biosseguran%C3%A7a%20na%20minha%20academia." target="_blank" rel="noreferrer" aria-label="Falar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+  <span>Falar no WhatsApp</span>
+</a>
+
+<script>
+(function () {
+  var overlay = document.getElementById('overlay');
+  document.getElementById('openMenu').addEventListener('click', function () { overlay.classList.add('open'); });
+  document.getElementById('closeMenu').addEventListener('click', function () { overlay.classList.remove('open'); });
+  overlay.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { overlay.classList.remove('open'); });
+  });
+  if (window.innerWidth >= 640) document.getElementById('menuLabel').style.display = 'inline';
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+    });
+  }, { rootMargin: '-60px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+  var track = document.getElementById('track');
+  function scrollCards(dir) {
+    var card = track.querySelector('.card');
+    var amount = card ? card.offsetWidth + 16 : track.clientWidth * 0.8;
+    track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+  }
+  document.getElementById('prev').addEventListener('click', function () { scrollCards(-1); });
+  document.getElementById('next').addEventListener('click', function () { scrollCards(1); });
+
+  var form = document.getElementById('leadForm');
+  var error = document.getElementById('formError');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    if (!email) { error.textContent = 'Informe seu email.'; error.style.display = 'block'; return; }
+    error.style.display = 'none';
+    var msg = 'Olá! Quero solicitar um diagnóstico do meu tatame. Meu email: ' + email;
+    window.open('https://wa.me/5521997943603?text=' + encodeURIComponent(msg), '_blank');
+    form.style.display = 'none';
+    document.querySelector('.form-note').style.display = 'none';
+    document.getElementById('success').classList.add('show');
+  });
+  document.getElementById('again').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('email').value = '';
+    document.getElementById('success').classList.remove('show');
+    form.style.display = 'block';
+    document.querySelector('.form-note').style.display = 'block';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+  "name": "Lead",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Nome",
+      "description": "Nome do contato (pode repetir o email em cadastros teaser)"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email",
+      "description": "Email de contato do lead"
+    },
+    "interest": {
+      "type": "string",
+      "enum": [
+        "essencial",
+        "profissional",
+        "black_belt",
+        "diagnostico",
+        "teaser",
+        "general"
+      ],
+      "default": "teaser",
+      "title": "Interesse",
+      "description": "Tipo de interesse / origem do cadastro"
+    }
+  },
+  "required": [
+    "name",
+    "email"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

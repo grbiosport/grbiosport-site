@@ -1,0 +1,80 @@
+{
+  "name": "Academias",
+  "type": "object",
+  "properties": {
+    "nome": {
+      "type": "string",
+      "title": "Nome",
+      "description": "Nome oficial da academia parceira"
+    },
+    "slug": {
+      "type": "string",
+      "title": "Slug",
+      "description": "Identificador \u00fanico usado na URL p\u00fablica /selo/:slug"
+    },
+    "bairro": {
+      "type": "string",
+      "title": "Bairro",
+      "description": "Bairro ou regi\u00e3o (usado na busca da rede)"
+    },
+    "endereco": {
+      "type": "string",
+      "title": "Endere\u00e7o",
+      "description": "Endere\u00e7o completo da unidade"
+    },
+    "ultima_higienizacao": {
+      "type": "string",
+      "format": "date-time",
+      "title": "\u00daltima Higieniza\u00e7\u00e3o",
+      "description": "Data e hora da \u00faltima interven\u00e7\u00e3o de biosseguran\u00e7a executada"
+    },
+    "responsavel_tecnico": {
+      "type": "string",
+      "title": "Respons\u00e1vel T\u00e9cnico",
+      "description": "Profissional que executou e assinou a higieniza\u00e7\u00e3o"
+    },
+    "protocolo_utilizado": {
+      "type": "string",
+      "title": "Protocolo Utilizado",
+      "default": "Quatern\u00e1rio 5\u00aa Gera\u00e7\u00e3o e Vapor 100\u00b0C K\u00e4rcher",
+      "description": "Protocolo t\u00e9cnico aplicado na interven\u00e7\u00e3o"
+    },
+    "frequencia_dias": {
+      "type": "number",
+      "title": "Frequ\u00eancia de higieniza\u00e7\u00e3o (dias)",
+      "default": 30,
+      "description": "Prazo do plano de higieniza\u00e7\u00e3o da academia, em dias. Define a validade do selo."
+    },
+    "status_selo": {
+      "type": "string",
+      "enum": [
+        "Ativo",
+        "Inativo"
+      ],
+      "default": "Ativo",
+      "title": "Status do Selo"
+    }
+  },
+  "required": [
+    "nome",
+    "slug"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
