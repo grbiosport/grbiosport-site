@@ -11,7 +11,7 @@ const GUARANTEES = [
   {
     icon: Flame,
     title: "Vapor a 100°C",
-    text: "Higienização térmica com equipamento Kärcher, que alcança microfissuras do tatame.",
+    text: "Higienização térmica com equipemento Kärcher, que alcança microfissuras do tatame.",
   },
   {
     icon: ClipboardCheck,

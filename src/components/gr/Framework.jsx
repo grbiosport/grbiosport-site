@@ -8,7 +8,7 @@ const PILLARS = [
     alt: "Auditoria e Diagnóstico Sanitário",
     title: "Auditoria & Diagnóstico Sanitário",
     description:
-      "Mapeamos as microfissuras de impacto, a porosidade do EVA e as zonas cegas de humidade. Identificamos com precisão onde o biofilme bacteriano resiste aos produtos caseiros.",
+      "Mapeamos as microfissuras de impacto, a porosidade do EVA e as zonas cegas de umidade. Identificamos com precisão onde o biofilme bacteriano resiste aos produtos caseiros.",
     cta: "Prevenção de surtos invisíveis",
   },
   {
@@ -26,7 +26,7 @@ const PILLARS = [
     alt: "Selo Oficial e Blindagem de Imagem",
     title: "Selo Oficial & Blindagem de Imagem",
     description:
-      "O seu espaço recebe a Certificação Física de Biossegurança Ativa e laudo para a receção. A higiene do seu dojo passa a ser o seu argumento comercial de maior autoridade.",
+      "O seu espaço recebe a Certificação Física de Biossegurança Ativa e laudo para a recepção. A higiene do seu dojo passa a ser o seu argumento comercial de maior autoridade.",
     cta: "Retenção e valor de marca",
   },
 ];

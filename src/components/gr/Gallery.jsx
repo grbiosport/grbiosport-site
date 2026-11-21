@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const IMAGES = [
   {
     src: "/images/05ef270db_1001389978.png",
-    alt: "Luz UV revelando colónias de bactérias no tatame",
+    alt: "Luz UV revelando colônias de bactérias no tatame",
   },
   {
     src: "/images/3ae2652fe_1001389979.png",

@@ -4,7 +4,7 @@ const STATS = [
   {
     value: "+100M",
     unit: "Microrganismos / m²",
-    desc: "Sem esterilização com efeito residual, tatames acumulam colónias superiores às encontradas em instalações sanitárias públicas.",
+    desc: "Sem esterilização com efeito residual, tatames acumulam colônias superiores às encontradas em instalações sanitárias públicas.",
   },
   {
     value: "90%",
@@ -14,12 +14,12 @@ const STATS = [
   {
     value: "82%",
     unit: "Tolerância zero dos pais",
-    desc: "Nas turmas infantis, um único caso de micose, impetigo ou infeção dérmica leva ao cancelamento imediato de matrículas pelas famílias.",
+    desc: "Nas turmas infantis, um único caso de micose, impetigo ou infecção dérmica leva ao cancelamento imediato de matrículas pelas famílias.",
   },
   {
     value: "2x",
     unit: "Mais valor percebido",
-    desc: "Espaços desportivos certificados por laudos técnicos de biossegurança retêm atletas por mais tempo e justificam mensalidades superiores.",
+    desc: "Espaços esportivos certificados por laudos técnicos de biossegurança retêm atletas por mais tempo e justificam mensalidades superiores.",
   },
 ];
 

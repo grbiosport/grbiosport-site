@@ -56,8 +56,8 @@ export default function Contact() {
         </h2>
         <p className="max-w-xl mx-auto text-white/60 text-lg leading-relaxed mb-12">
           Descubra se o seu dojo está verdadeiramente seguro ou apenas perfumado.
-          Solicite uma avaliação diagnóstica com a nossa equipa especializada em
-          biossegurança desportiva.
+          Solicite uma avaliação diagnóstica com a nossa equipe especializada em
+          biossegurança esportiva.
         </p>
 
         {/* Teaser signup */}
@@ -72,7 +72,7 @@ export default function Contact() {
               <CheckCircle2 className="w-12 h-12 text-[#6FA84A] mb-6" />
               <h3 className="text-white text-xl font-light mb-3">Diagnóstico solicitado!</h3>
               <p className="text-white/60">
-                A nossa equipa especializada entrará em contato para agendar a
+                A nossa equipe especializada entrará em contato para agendar a
                 auditoria do seu tatame.
               </p>
               <button
