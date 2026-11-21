@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const IMAGES = [
   {
-    src: "/images/05ef270db_1001389978.png",
+    src: "/images/galeria-03-real.jpg",
     alt: "Luz UV revelando colônias de bactérias no tatame",
   },
   {
@@ -15,15 +15,15 @@ const IMAGES = [
     alt: "Criança deitada no tatame suado",
   },
   {
-    src: "/images/0e7fa2e60_1001392182.jpg",
+    src: "/images/galeria-04-real.jpg",
     alt: "Contaminação invisível no tatame",
   },
   {
-    src: "/images/06caf1341_1001392178.jpg",
+    src: "/images/galeria-05-real.jpg",
     alt: "Pano com desinfetante espalhando bactérias",
   },
   {
-    src: "/images/6934efeed_1001392177.jpg",
+    src: "/images/galeria-06-real.jpg",
     alt: "Dojo blindado com tatame higienizado e crianças treinando",
   },
 ];
