@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 const PILLARS = [
   {
     phase: "FASE 01",
-    image: "/images/d2697f726_generated_image.png",
+    image: "/images/fase-01-real.jpg",
     alt: "Auditoria e Diagnóstico Sanitário",
     title: "Auditoria & Diagnóstico Sanitário",
     description:
@@ -13,7 +13,7 @@ const PILLARS = [
   },
   {
     phase: "FASE 02",
-    image: "/images/7b6cea0b1_generated_image.png",
+    image: "/images/fase-02-real.jpg",
     alt: "Higienização Profunda Quaternária",
     title: "Higienização Profunda Quaternária",
     description:
@@ -22,7 +22,7 @@ const PILLARS = [
   },
   {
     phase: "FASE 03",
-    image: "/images/23e5854f3_generated_image.png",
+    image: "/images/fase-03-real.jpg",
     alt: "Selo Oficial e Blindagem de Imagem",
     title: "Selo Oficial & Blindagem de Imagem",
     description:
