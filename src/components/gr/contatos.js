@@ -8,3 +8,4 @@ export function whatsappLink(contato, mensagem) {
   const base = `https://wa.me/${contato.telefone}`;
   return mensagem ? `${base}?text=${encodeURIComponent(mensagem)}` : base;
 }
+export default contatos;
