@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ShieldCheck, Menu } from "lucide-react";
 import Logo from "@/components/gr/Logo";
 
 export default function Hero({ onOpenMenu }) {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.12]);
+
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative min-h-[640px] h-screen flex flex-col justify-center overflow-hidden bg-[#1A1A1A]"
     >
-      <div className="absolute inset-0">
+      <motion.div
+        style={{ y, scale }}
+        className="absolute -top-[8%] left-0 right-0 h-[116%] will-change-transform"
+      >
         <img
           src="/images/hero-real.jpg"
           alt="Academia de Jiu-Jitsu com tatames higienizados"
@@ -16,7 +30,7 @@ export default function Hero({ onOpenMenu }) {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/50 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/98 via-transparent to-[#1A1A1A]/70" />
-      </div>
+      </motion.div>
 
       {/* Linha verde de varredura */}
       <div className="gr-scan-line" />
