@@ -18,6 +18,9 @@ export default function Hero({ onOpenMenu }) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/98 via-transparent to-[#1A1A1A]/70" />
       </div>
 
+      {/* Linha verde de varredura */}
+      <div className="gr-scan-line" />
+
       <header className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 md:px-12 py-6">
         <div className="flex items-center gap-3">
           <Logo size={44} />
@@ -54,7 +57,7 @@ export default function Hero({ onOpenMenu }) {
         <h1 className="text-4xl sm:text-6xl md:text-8xl font-black uppercase leading-[0.88] tracking-tight text-white">
           Biossegurança
           <br />
-          <span className="text-[#6FA84A]">para o</span> tatame
+          <span className="gr-kinetic-text">para o</span> tatame
         </h1>
 
         <p className="mt-8 max-w-xl text-white/70 text-base md:text-lg leading-relaxed">

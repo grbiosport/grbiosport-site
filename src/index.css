@@ -203,3 +203,38 @@ body.gr-biosport {
     --theme-muted-background-1: 240.000000 2.777778% 14.117647%;
     --theme-primary-background-1: 98.630137 41.714286% 34.313725%;
 }
+
+/* Animação da linha verde de varredura (scan) e brilho no título */
+@keyframes gr-scan {
+  0% { transform: translateY(-10vh); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.gr-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #4D7C33, #6FA84A, #4D7C33, transparent);
+  box-shadow: 0 0 12px rgba(111, 168, 74, 0.75);
+  animation: gr-scan 4.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes gr-shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.gr-kinetic-text {
+  background: linear-gradient(100deg, #fff 0%, #fff 40%, #6FA84A 50%, #fff 60%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gr-shimmer 6s linear infinite;
+}
