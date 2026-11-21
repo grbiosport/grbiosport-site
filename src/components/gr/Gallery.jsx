@@ -3,15 +3,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const IMAGES = [
   {
-    src: "/images/05ef270db_1001389978.png",
+    src: "/images/fase-01-real.jpg",
     alt: "Luz UV revelando colônias de bactérias no tatame",
   },
   {
-    src: "/images/3ae2652fe_1001389979.png",
+    src: "/images/galeria-01-real.jpg",
     alt: "Jovem com lesão de pele por micose no vestiário",
   },
   {
-    src: "/images/e689d57fc_1001392183.jpg",
+    src: "/images/galeria-02-real.jpg",
     alt: "Criança deitada no tatame suado",
   },
   {

@@ -10,7 +10,7 @@ export default function Hero({ onOpenMenu }) {
     >
       <div className="absolute inset-0">
         <img
-          src="/images/c566fe01b_generated_image.png"
+          src="/images/hero-real.jpg"
           alt="Academia de Jiu-Jitsu com tatames higienizados"
           className="w-full h-full object-cover opacity-55"
         />
