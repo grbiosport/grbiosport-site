@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const IMAGES = [
@@ -30,14 +30,47 @@ const IMAGES = [
 
 export default function Gallery() {
   const trackRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const getStepAmount = (track) => {
+    const card = track.querySelector("article");
+    return card ? card.offsetWidth + 20 : track.clientWidth * 0.8;
+  };
 
   const scrollCards = (dir) => {
     const track = trackRef.current;
     if (!track) return;
-    const card = track.querySelector("article");
-    const amount = card ? card.offsetWidth + 20 : track.clientWidth * 0.8;
-    track.scrollBy({ left: dir * amount, behavior: "smooth" });
+
+    const amount = getStepAmount(track);
+    const maxScrollLeft = track.scrollWidth - track.clientWidth;
+
+    if (dir > 0 && track.scrollLeft >= maxScrollLeft - 4) {
+      track.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+
+    if (dir < 0 && track.scrollLeft <= 4) {
+      track.scrollTo({ left: maxScrollLeft, behavior: "smooth" });
+      return;
+    }
+
+    const nextLeft =
+      dir > 0
+        ? Math.min(track.scrollLeft + amount, maxScrollLeft)
+        : Math.max(track.scrollLeft - amount, 0);
+
+    track.scrollTo({ left: nextLeft, behavior: "smooth" });
   };
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      scrollCards(1);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <section className="relative bg-[#1A1A1A] py-24 md:py-32 overflow-hidden border-t border-[#3A3A3C]/30">
@@ -79,6 +112,12 @@ export default function Gallery() {
 
       <div
         ref={trackRef}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
+        onPointerDown={() => setIsPaused(true)}
+        onPointerUp={() => setIsPaused(false)}
         className="flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory px-6 md:px-12 pb-4 scroll-smooth"
         style={{ scrollbarWidth: "none" }}
       >
