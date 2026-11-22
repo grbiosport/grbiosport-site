@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Instagram, ShieldCheck, Headset, Handshake, FileText, MessageCircle, Lock } from "lucide-react";
+import { Instagram, ShieldCheck, Headset, FileText, MessageCircle, Lock } from "lucide-react";
 import Logo from "@/components/gr/Logo";
 import { CONTATOS, whatsappLink } from "@/components/gr/contatos";
 
@@ -29,7 +29,7 @@ export default function Footer() {
             GR<span className="text-[#6FA84A]">.</span>Biosport
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             <div>
               <Logo size={56} />
               <p className="text-white/40 text-xs mt-4 max-w-[16rem] leading-relaxed">
@@ -37,8 +37,8 @@ export default function Footer() {
               </p>
             </div>
             <div>
-              <p className="ghost-data mb-4 flex items-center gap-2"><Headset className="w-3.5 h-3.5" />SUPORTE TÉCNICO</p>
-              <a href="mailto:grbiosport@gmail.com?subject=Suporte%20T%C3%A9cnico" className="block text-white/70 hover:text-[#6FA84A] transition-colors text-sm">
+              <p className="ghost-data mb-4 flex items-center gap-2"><Headset className="w-3.5 h-3.5" />ATENDIMENTO</p>
+              <a href="mailto:grbiosport@gmail.com?subject=Atendimento%20GR%20Biosport" className="block text-white/70 hover:text-[#6FA84A] transition-colors text-sm">
                 grbiosport@gmail.com
               </a>
               <div className="mt-2 space-y-1.5">
@@ -58,20 +58,6 @@ export default function Footer() {
               </div>
               <p className="text-white/40 text-xs mt-2">Seg a Sáb · 8h às 18h</p>
               <p className="text-white/40 text-xs mt-1">Barra da Tijuca, Rio de Janeiro</p>
-            </div>
-            <div>
-              <p className="ghost-data mb-4 flex items-center gap-2"><Handshake className="w-3.5 h-3.5" />NOVOS PARCEIROS</p>
-              <p className="text-white/50 text-xs leading-relaxed mb-3">
-                Tem uma academia e quer o Selo de Biossegurança?
-              </p>
-              <a href="mailto:grbiosport@gmail.com?subject=Parceria%20GR%20Biosport" className="block text-white/70 hover:text-[#6FA84A] transition-colors text-sm">
-              </a>
-              <a href={whatsappLink(CONTATOS[0], "Olá! Tenho uma academia e quero ser parceiro da GR Biosport.")} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-white/70 hover:text-[#6FA84A] transition-colors text-sm mt-2">
-                <MessageCircle className="w-3.5 h-3.5" />Falar no WhatsApp
-              </a>
-              <a href="#contact" className="block text-[#6FA84A] hover:text-white transition-colors text-sm mt-2">
-                Solicitar avaliação →
-              </a>
             </div>
             <div>
               <p className="ghost-data mb-4">NAVEGAÇÃO</p>
