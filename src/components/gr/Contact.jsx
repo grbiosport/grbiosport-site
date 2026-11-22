@@ -1,38 +1,31 @@
-const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
-
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { motion } from "framer-motion";
+import { CheckCircle2, MessageCircle } from "lucide-react";
+import { CONTATOS, whatsappLink } from "@/components/gr/contatos";
 
 export default function Contact() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("idle"); // idle | calculating | submitting | success | error
-  const [error, setError] = useState("");
+  const [academia, setAcademia] = useState("");
+  const [enviado, setEnviado] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const mensagemBase = academia.trim()
+    ? `Olá! Sou de ${academia.trim()} e quero solicitar um diagnóstico do meu tatame com a GR Biosport.`
+    : "Olá! Quero solicitar um diagnóstico do meu tatame com a GR Biosport.";
+
+  const linkWhatsApp = whatsappLink(CONTATOS[0], mensagemBase);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError("");
-    if (!email.trim()) {
-      setError("Informe seu email.");
-      return;
-    }
-    setStatus("calculating");
-    await new Promise((r) => setTimeout(r, 600));
-    setStatus("submitting");
-    try {
-      await db.entities.Lead.create({ name: email.trim(), email: email.trim(), interest: "teaser" });
-      setStatus("success");
-    } catch (err) {
-      setError(err?.message || "Erro ao processar. Tente novamente.");
-      setStatus("error");
-    }
+    window.open(linkWhatsApp, "_blank", "noopener,noreferrer");
+    setEnviado(true);
   };
 
   return (
-    <section id="contact" className="relative bg-[#1A1A1A] py-24 md:py-36 overflow-hidden border-t border-[#3A3A3C]/30">
-      {/* Ghost grid background */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.06]"
+    <section
+      id="contact"
+      className="relative py-24 md:py-36 bg-[#141414] overflow-hidden border-t border-white/5"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
             "linear-gradient(#4D7C33 1px, transparent 1px), linear-gradient(90deg, #4D7C33 1px, transparent 1px)",
@@ -41,78 +34,95 @@ export default function Contact() {
       />
       <div
         className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] rounded-full opacity-20 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(77,124,51,0.35), transparent 60%)" }}
+        style={{
+          background:
+            "radial-gradient(circle, rgba(77,124,51,0.35), transparent 60%)",
+        }}
       />
 
-      <div className="relative px-6 md:px-12 max-w-4xl mx-auto text-center">
-        <div className="flex items-center justify-center gap-3 mb-6">
-          <span className="w-2 h-2 rounded-full bg-[#6FA84A] blink" />
-          <span className="ghost-data">Auditoria Técnica Sem Compromisso</span>
+      <div className="relative max-w-4xl mx-auto px-6 md:px-12 text-center">
+        <div className="inline-flex items-center gap-3 mb-6">
+          <span className="w-2 h-2 rounded-full bg-[#4D7C33] animate-pulse" />
+          <span className="font-mono text-[#6FA84A]/70 tracking-[0.15em] text-xs uppercase">
+            Auditoria Técnica Sem Compromisso
+          </span>
         </div>
 
-        <h2 className="text-white font-display font-light tracking-tight leading-[0.95] mb-6"
-          style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}>
-          O padrão do seu tatame reflete o <span className="text-[#6FA84A] font-medium">padrão da sua graduação</span>.
-        </h2>
-        <p className="max-w-xl mx-auto text-white/60 text-lg leading-relaxed mb-12">
-          Descubra se o seu dojo está verdadeiramente seguro ou apenas perfumado.
-          Solicite uma avaliação diagnóstica com a nossa equipe especializada em
-          biossegurança esportiva.
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl sm:text-5xl md:text-6xl font-light tracking-tight leading-[1.05] text-white"
+        >
+          O padrão do seu tatame reflete o{" "}
+          <span className="text-[#6FA84A] font-medium">
+            padrão da sua graduação
+          </span>
+          .
+        </motion.h2>
+
+        <p className="mt-6 max-w-2xl mx-auto text-white/60 text-base md:text-lg leading-relaxed">
+          Descubra se o seu dojo está verdadeiramente seguro ou apenas
+          perfumado. Solicite uma avaliação diagnóstica com a nossa equipe
+          especializada em biossegurança esportiva.
         </p>
 
-        {/* Teaser signup */}
-        <AnimatePresence mode="wait">
-          {status === "success" ? (
-            <motion.div
-              key="success"
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="border border-[#4D7C33]/50 bg-[#4D7C33]/[0.07] p-10 max-w-md mx-auto flex flex-col items-center text-center"
-            >
-              <CheckCircle2 className="w-12 h-12 text-[#6FA84A] mb-6" />
-              <h3 className="text-white text-xl font-light mb-3">Diagnóstico solicitado!</h3>
-              <p className="text-white/60">
-                A nossa equipe especializada entrará em contato para agendar a
-                auditoria do seu tatame.
-              </p>
+        <div className="mt-12 max-w-md mx-auto">
+          {!enviado ? (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              <input
+                type="text"
+                value={academia}
+                onChange={(e) => setAcademia(e.target.value)}
+                placeholder="Nome da sua academia ou dojo (opcional)"
+                className="w-full bg-transparent border border-white/15 focus:border-[#6FA84A] text-white placeholder:text-white/35 px-5 py-4 outline-none transition-colors"
+              />
               <button
-                onClick={() => { setStatus("idle"); setEmail(""); }}
-                className="mt-8 text-[#6FA84A] text-sm tracking-wide hover:underline"
+                type="submit"
+                className="w-full inline-flex items-center justify-center gap-2.5 bg-[#4D7C33] hover:bg-[#6FA84A] text-white font-semibold tracking-wide px-7 py-4 transition-colors"
               >
-                Cadastrar outro email
+                <MessageCircle className="w-5 h-5" />
+                SOLICITAR DIAGNÓSTICO DO MEU TATAME
               </button>
-            </motion.div>
+            </form>
           ) : (
-            <motion.form
-              key="form"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              onSubmit={handleSubmit}
-              className="max-w-md mx-auto"
-            >
-              <div className="flex flex-col gap-3">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="seu@email.com"
-                  className="w-full bg-transparent border border-[#3A3A3C]/70 text-white px-5 py-4 placeholder:text-white/30 focus:outline-none focus:border-[#6FA84A] transition-colors"
-                />
+            <div className="border border-[#4D7C33]/50 bg-[#4D7C33]/10 p-8 text-center">
+              <CheckCircle2 className="w-12 h-12 text-[#6FA84A] mx-auto mb-4" />
+              <h3 className="text-xl font-medium text-white mb-2">
+                Conversa iniciada no WhatsApp!
+              </h3>
+              <p className="text-white/65 text-sm leading-relaxed">
+                Se o WhatsApp não abriu automaticamente, clique abaixo para falar
+                direto com nossa equipe.
+              </p>
+              <a
+                href={linkWhatsApp}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#6FA84A] hover:underline"
+              >
+                Abrir WhatsApp agora →
+              </a>
+              <div className="mt-4">
                 <button
-                  type="submit"
-                  disabled={status === "calculating" || status === "submitting"}
-                  className="bg-[#4D7C33] text-white px-7 py-4 font-semibold tracking-wide hover:bg-[#6FA84A] disabled:cursor-wait transition-all"
+                  type="button"
+                  onClick={() => {
+                    setAcademia("");
+                    setEnviado(false);
+                  }}
+                  className="text-xs text-white/45 hover:text-white/80 underline"
                 >
-                  {status === "calculating" && <span className="calc-pulse">CALCULANDO...</span>}
-                  {status === "submitting" && <span className="flex items-center gap-2"><Loader2 className="w-4 h-4 animate-spin" />...</span>}
-                  {(status === "idle" || status === "error") && "SOLICITAR DIAGNÓSTICO DO MEU TATAME"}
+                  Enviar nova solicitação
                 </button>
               </div>
-              {error && <p className="text-red-400 text-sm mt-4">{error}</p>}
-              <p className="text-white/50 text-sm mt-5">Atendimento direto por especialistas • Resposta rápida pelo WhatsApp</p>
-            </motion.form>
+            </div>
           )}
-        </AnimatePresence>
+
+          <p className="mt-5 text-white/50 text-sm">
+            Atendimento direto por especialistas • Resposta rápida pelo WhatsApp
+          </p>
+        </div>
       </div>
     </section>
   );
