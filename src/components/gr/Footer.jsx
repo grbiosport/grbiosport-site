@@ -65,7 +65,6 @@ export default function Footer() {
                 Tem uma academia e quer o Selo de Biossegurança?
               </p>
               <a href="mailto:grbiosport@gmail.com?subject=Parceria%20GR%20Biosport" className="block text-white/70 hover:text-[#6FA84A] transition-colors text-sm">
-                Parceria por e-mail
               </a>
               <a href={whatsappLink(CONTATOS[0], "Olá! Tenho uma academia e quero ser parceiro da GR Biosport.")} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-white/70 hover:text-[#6FA84A] transition-colors text-sm mt-2">
                 <MessageCircle className="w-3.5 h-3.5" />Falar no WhatsApp
