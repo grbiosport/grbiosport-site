@@ -118,13 +118,13 @@ export default function Gallery() {
         onTouchEnd={() => setIsPaused(false)}
         onPointerDown={() => setIsPaused(true)}
         onPointerUp={() => setIsPaused(false)}
-        className="flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory px-6 md:px-12 pb-4 scroll-smooth"
+        className="flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory px-[9vw] sm:px-12 pb-4 scroll-smooth"
         style={{ scrollbarWidth: "none" }}
       >
         {IMAGES.map((img) => (
           <article
             key={img.src}
-            className="flex-none w-[82vw] sm:w-[420px] md:w-[360px] snap-start"
+            className="flex-none w-[82vw] sm:w-[420px] md:w-[360px] snap-center sm:snap-start"
           >
             <div className="relative aspect-[4/5] overflow-hidden bg-[#0e1721] border border-[#3A3A3C]/60 hover:border-[#4D7C33]/50 transition-colors">
               <img
