@@ -24,7 +24,7 @@ export default function Hero({ onOpenMenu }) {
         className="absolute -top-[8%] left-0 right-0 h-[116%] will-change-transform"
       >
         <img
-          src="/images/hero-real.jpg"
+          src="/images/hero-higienizacao.jpg"
           alt="Academia de Jiu-Jitsu com tatames higienizados"
           className="w-full h-full object-cover opacity-55"
         />
