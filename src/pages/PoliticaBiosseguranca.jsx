@@ -10,7 +10,7 @@ const SECTIONS = [
   },
   {
     title: "2. Protocolo de higienização",
-    text: "A intervenção é feita em fases clínicas: remoção da carga orgânica, aplicação de desinfetante quaternário de 5ª geração com efeito residual e finalização com vapor a 100°C. Os produtos e equipementos são escolhidos para não degradar a borracha dos tatames.",
+    text: "A intervenção é realizada em etapas técnicas: remoção da carga orgânica, aplicação de desinfetante quaternário de 5ª geração com efeito residual e finalização com vapor a 100°C. Os produtos e equipamentos são selecionados para preservar a integridade dos tatames e pisos esportivos, evitando ressecamento ou degradação prematura do material.",
   },
   {
     title: "3. Validade do selo",
