@@ -25,7 +25,7 @@ export default function Login() {
     setLoading(true);
     try {
       await db.auth.loginViaEmailPassword(email, password);
-      window.location.href = returnTo;
+      window.location.href = returnTo === "/" ? "/admin/selos" : returnTo;
     } catch (err) {
       setError(err.message || "Email ou senha inválidos");
     } finally {
